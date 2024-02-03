@@ -19,7 +19,7 @@ function Board({ xIsNext, squares, onPlay }) {
 	return (
 		<>
 			<div className="text-center font-semibold">{status}</div>
-			<div className="flex flex-wrap w-32">
+			<div className="grid grid-cols-3 gap-1">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
 				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />

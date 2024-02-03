@@ -1,13 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-
-function Square({ value, onSquareClick }) {
-	return (
-		<button onClick={onSquareClick} className="w-10 h-10 border border-solid bg-white border-black text-2xl font-bold cursor-pointer">
-			{value}
-		</button>
-	);
-}
+import Square from "./components/Square";
 
 function Board({ xIsNext, squares, onPlay }) {
 	function handleClick(i) {

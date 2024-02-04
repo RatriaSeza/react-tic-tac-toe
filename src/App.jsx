@@ -41,8 +41,8 @@ function Game() {
 	});
 
 	return (
-		<div className="bg-[#56BAED] w-dvw h-dvh">
-			<div className="h-full flex gap-10">
+		<div className="bg-[#56BAED] w-dvw h-dvh flex flex-col justify-between">
+			<div className="h-fit flex gap-10">
 				<div className="basis-1/2 flex items-center justify-end">
 					<div className="w-fit">
 						<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} board={board} />
@@ -55,6 +55,11 @@ function Game() {
 							<ol className="list-decimal text-xs">{moves}</ol>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div className="h-10 flex items-end bg-gray-50 mb-0 text-sky-500 shadow-xl">
+				<div className="h-full flex items-center ml-10">
+					Made with <i className="mx-2 text-pink-500 fa-regular fa-heart"></i> by RatriaSeza
 				</div>
 			</div>
 		</div>

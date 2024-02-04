@@ -2,6 +2,7 @@
 import Square from "./Square";
 import XIcon from "./XIcon";
 import OIcon from "./OIcon";
+import Player from "./Player";
 
 function Board({ xIsNext, squares, onPlay, board }) {
 	function handleClick(i) {
@@ -16,11 +17,13 @@ function Board({ xIsNext, squares, onPlay, board }) {
 	const winner = calculateWinner(board);
 	let status = "";
 
-	winner ? (status = "Winner : " + winner) : (status = (xIsNext ? "X" : "O") + " Turn");
+	if (winner) {
+		status = "Winner : " + winner
+	}
 
 	return (
 		<>
-			<div className="text-3xl text-white text-center font-semibold mb-4">{status}</div>
+			<div className="text-3xl text-white text-center font-semibold mb-4">{winner ? status : (<Player xIsNext={xIsNext} />)}</div>
 			<div className="grid grid-cols-3 gap-1">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />

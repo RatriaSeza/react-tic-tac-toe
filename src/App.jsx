@@ -4,18 +4,23 @@ import Board from "./components/Board";
 
 function Game() {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [currentMove, setCurrentMove] = useState(0);
-  const xIsNext = currentMove % 2 === 0;
+	const [currentMove, setCurrentMove] = useState(0);
+	const [board, setBoard] = useState(Array(9).fill(null));
+	const xIsNext = currentMove % 2 === 0;
 	const currentSquares = history[currentMove];
 
-  function jumpTo(nextMove) {
-    setCurrentMove(nextMove);
-  }
+	function jumpTo(nextMove) {
+		setCurrentMove(nextMove);
+	}
 
-	function handlePlay(nextSquares) {
-    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+	function handlePlay(nextSquares, i) {
+		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
 		setHistory(nextHistory);
-    setCurrentMove(nextHistory.length - 1);
+		setCurrentMove(nextHistory.length - 1);
+
+		const nextBoard = board.slice();
+		nextBoard[i] = xIsNext ? "X" : "O";
+		setBoard(nextBoard);
 	}
 
 	const moves = history.map((squares, move) => {
@@ -28,18 +33,29 @@ function Game() {
 
 		return (
 			<li key={move}>
-				<button onClick={() => jumpTo(move)} className="text-gray-900 w-36 bg-gray-50 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-sm text-xs px-1.5 py-0.5 me-1">{description}</button>
+				<button onClick={() => jumpTo(move)} className="text-gray-900 w-36 bg-gray-50 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-sm text-xs px-1.5 py-0.5 me-1">
+					{description}
+				</button>
 			</li>
 		);
 	});
 
 	return (
-		<div className="m-10 flex justify-center">
-			<div>
-				<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-			</div>
-			<div className="ml-5">
-				<ol className="list-decimal text-xs">{moves}</ol>
+		<div className="bg-[#56BAED] w-dvw h-dvh">
+			<div className="h-full flex gap-10">
+				<div className="basis-1/2 flex items-center justify-end">
+					<div className="w-fit">
+						<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} board={board} />
+					</div>
+				</div>
+				<div className="basis-1/2 mt-16 ml-10">
+					<div className="w-fit">
+						<h4 className="text-center text-white text-3xl font-bold mb-3 drop-shadow-md">Moves</h4>
+						<div className="bg-white w-80 h-96 rounded-lg shadow-md">
+							<ol className="list-decimal text-xs">{moves}</ol>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

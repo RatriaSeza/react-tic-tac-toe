@@ -1,24 +1,26 @@
 /* eslint-disable react/prop-types */
 import Square from "./Square";
+import XIcon from "./XIcon";
+import OIcon from "./OIcon";
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay, board }) {
 	function handleClick(i) {
-		if (squares[i] || calculateWinner(squares)) return;
+		if (squares[i] || calculateWinner(board)) return;
 		const nextSquares = squares.slice();
 
-		nextSquares[i] = xIsNext ? "X" : "O";
+		nextSquares[i] = xIsNext ? <XIcon /> : <OIcon />;
 
-		onPlay(nextSquares);
+		onPlay(nextSquares, i);
 	}
 
-	const winner = calculateWinner(squares);
+	const winner = calculateWinner(board);
 	let status = "";
 
 	winner ? (status = "Winner : " + winner) : (status = (xIsNext ? "X" : "O") + " Turn");
 
 	return (
 		<>
-			<div className="text-center font-semibold">{status}</div>
+			<div className="text-3xl text-white text-center font-semibold mb-4">{status}</div>
 			<div className="grid grid-cols-3 gap-1">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -50,6 +52,7 @@ function calculateWinner(squares) {
 		const [a, b, c] = lines[i];
 
 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      console.log(squares[a]);
 			return squares[a];
 		}
 	}

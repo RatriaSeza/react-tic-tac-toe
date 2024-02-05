@@ -18,12 +18,16 @@ function Board({ xIsNext, squares, onPlay, board }) {
 	let status = "";
 
 	if (winner) {
-		status = "Winner : " + winner
+		status = (
+			<span className="flex justify-center items-end">
+				<span className="text-4xl mr-3">Winner : </span> {winner == "X" ? <XIcon className="text-black" /> : <OIcon className="text-black" />}
+			</span>
+		);
 	}
 
 	return (
 		<>
-			<div className="text-3xl text-white text-center font-semibold mb-4">{winner ? status : (<Player xIsNext={xIsNext} />)}</div>
+			<div className="text-3xl text-black text-center font-semibold mb-4">{winner ? status : <Player xIsNext={xIsNext} />}</div>
 			<div className="grid grid-cols-3 gap-2">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -55,7 +59,7 @@ function calculateWinner(squares) {
 		const [a, b, c] = lines[i];
 
 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      console.log(squares[a]);
+			console.log(squares[a]);
 			return squares[a];
 		}
 	}

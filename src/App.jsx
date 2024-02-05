@@ -57,7 +57,7 @@ function Game() {
 					</div>
 				</div>
 			</div>
-			<footer className="h-10 flex items-end bg-gray-50 mb-0 text-sky-500 shadow-xl">
+			<footer className="h-10 flex items-end bg-lightblue mb-0 text-black border-black shadow-xl">
 				<div className="h-full flex items-center ml-10">
 					Made with <i className="mx-2 text-pink-500 fa-regular fa-heart"></i> by RatriaSeza
 				</div>

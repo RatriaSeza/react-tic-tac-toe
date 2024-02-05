@@ -41,8 +41,8 @@ function Game() {
 	});
 
 	return (
-		<div className="bg-[#E8E8E8] w-dvw h-dvh flex flex-col justify-between">
-			<div className="h-fit flex gap-10">
+		<div className="bg-[#E8E8E8] w-dvw h-dvh flex flex-col">
+			<div className="flex gap-10">
 				<div className="basis-1/2 flex items-center justify-end">
 					<div className="w-fit">
 						<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} board={board} />
@@ -50,16 +50,21 @@ function Game() {
 				</div>
 				<div className="basis-1/2 mt-16 ml-10">
 					<div className="w-fit">
-						<h4 className="text-center text-white text-3xl font-bold mb-3 drop-shadow-md">Moves</h4>
+						<h4 className="text-center text-black text-3xl font-bold mb-3 drop-shadow-md">Moves</h4>
 						<div className="bg-lightblue w-80 h-96 rounded-md border-2 border-black shadow-box">
 							<ol className="list-decimal text-xs">{moves}</ol>
 						</div>
 					</div>
 				</div>
 			</div>
-			<footer className="h-10 flex items-end bg-lightblue mb-0 text-black border-black shadow-xl">
-				<div className="h-full flex items-center ml-10">
+			<footer className="grow mx-auto w-full mt-12 px-10 flex items-center justify-between bg-lightblue mb-0 text-black border-black shadow-2xl">
+				<div className="text-base font-medium">
 					Made with <i className="mx-2 text-pink-500 fa-regular fa-heart"></i> by RatriaSeza
+				</div>
+				<div className="text-4xl">
+					<a href="https://github.com/RatriaSeza" target="_blank" rel="noreferrer">
+						<img className="w-10 bg-black border-2 border-black rounded-full shadow-icon active:shadow-icon-active active:translate-x-[3px] active:translate-y-[3px]" src="/github-mark-white.png" alt="" />
+					</a>
 				</div>
 			</footer>
 		</div>

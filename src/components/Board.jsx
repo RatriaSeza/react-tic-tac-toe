@@ -15,6 +15,7 @@ function Board({ xIsNext, squares, onPlay, board }) {
 	}
 
 	const winner = calculateWinner(board);
+	const draw = board.every((square) => square !== null);
 	let status = "";
 
 	if (winner) {
@@ -23,11 +24,13 @@ function Board({ xIsNext, squares, onPlay, board }) {
 				<span className="text-4xl mr-3">Winner : </span> {winner == "X" ? <XIcon className="text-black" /> : <OIcon className="text-black" />}
 			</span>
 		);
+	} else if (draw) {
+		status = <span className="text-4xl text-black">Draw</span>;
 	}
 
 	return (
 		<>
-			<div className="text-3xl text-black text-center font-semibold mb-4">{winner ? status : <Player xIsNext={xIsNext} />}</div>
+			<div className="text-3xl text-black text-center font-semibold mb-4 drop-shadow-md">{winner || draw ? status : <Player xIsNext={xIsNext} />}</div>
 			<div className="grid grid-cols-3 gap-2">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />

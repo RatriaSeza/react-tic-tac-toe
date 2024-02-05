@@ -14,8 +14,10 @@ export default {
       },
       boxShadow: {
         box: '4px 4px 0px 0px black',
+        icon: '3px 3px 0px 0px black',
         'box-active': '0px 0px black',
-      }
+        'icon-active': '0px 0px black',
+      },
     },
   },
   plugins: [],

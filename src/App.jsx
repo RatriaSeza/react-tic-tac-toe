@@ -23,6 +23,12 @@ function Game() {
 		setBoard(nextBoard);
 	}
 
+	function handleReset() {
+		setHistory([Array(9).fill(null)]);
+		setCurrentMove(0);
+		setBoard(Array(9).fill(null));
+	}
+
 	const moves = history.map((squares, move) => {
 		let description = "";
 		if (move > 0) {
@@ -32,33 +38,32 @@ function Game() {
 		}
 
 		return (
-			<li key={move}>
-				<button onClick={() => jumpTo(move)} className="text-gray-900 w-36 bg-gray-50 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-sm text-xs px-1.5 py-0.5 me-1">
-					{description}
-				</button>
-			</li>
+			<button key={move} onClick={() => jumpTo(move)} className="bg-white w-11/12 h-8 border-2 border-black rounded-md shadow-box active:shadow-box-active active:translate-x-[3px] active:translate-y-[3px]">
+				{description} →
+			</button>
 		);
 	});
 
 	return (
-		<div className="bg-[#E8E8E8] w-dvw h-dvh flex flex-col">
-			<div className="flex gap-10">
-				<div className="basis-1/2 flex items-center justify-end">
-					<div className="w-fit">
-						<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} board={board} />
+		<div className="bg-[#E8E8E8] w-dvw h-dvh flex flex-col justify-between">
+			<div className="flex gap-10 pb-10">
+				<div className="basis-1/2 flex flex-col items-end justify-center">
+					<div className="flex flex-col items-center">
+						<div className="w-fit">
+							<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} board={board} />
+						</div>
+						<button onClick={handleReset} className="bg-white w-36 h-8 mt-4 border-2 border-black rounded-md shadow-box active:shadow-box-active active:translate-x-[3px] active:translate-y-[3px]">Reset</button>
 					</div>
 				</div>
 				<div className="basis-1/2 mt-16 ml-10">
 					<div className="w-fit">
 						<h4 className="text-center text-black text-3xl font-bold mb-3 drop-shadow-md">Moves</h4>
-						<div className="bg-lightblue w-80 h-96 rounded-md border-2 border-black shadow-box">
-							<ol className="list-decimal text-xs">{moves}</ol>
-						</div>
+						<div className="flex flex-col items-center gap-2 bg-lightblue w-80 h-96 p-2 rounded-md border-2 border-black shadow-box overflow-y-auto">{moves}</div>
 					</div>
 				</div>
 			</div>
-			<footer className="grow mx-auto w-full mt-12 px-10 flex items-center justify-between bg-lightblue mb-0 text-black border-black shadow-2xl">
-				<div className="text-base font-medium">
+			<footer className="fixed bottom-0 mx-auto w-full h-16 px-10 flex items-center justify-between bg-lightblue text-black border-black shadow-2xl">
+				<div className="text-xl font-medium text-white drop-shadow-[2px_2px_rgba(0,0,0,0.5)]">
 					Made with <i className="mx-2 text-pink-500 fa-regular fa-heart"></i> by RatriaSeza
 				</div>
 				<div className="text-4xl">

@@ -18,6 +18,9 @@ export default {
         'box-active': '0px 0px black',
         'icon-active': '0px 0px black',
       },
+      dropShadow: {
+        font: '4px 4px 0px 0px black',
+      }
     },
   },
   plugins: [],

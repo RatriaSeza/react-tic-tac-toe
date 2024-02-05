@@ -41,7 +41,7 @@ function Game() {
 	});
 
 	return (
-		<div className="bg-[#56BAED] w-dvw h-dvh flex flex-col justify-between">
+		<div className="bg-[#E8E8E8] w-dvw h-dvh flex flex-col justify-between">
 			<div className="h-fit flex gap-10">
 				<div className="basis-1/2 flex items-center justify-end">
 					<div className="w-fit">
@@ -51,7 +51,7 @@ function Game() {
 				<div className="basis-1/2 mt-16 ml-10">
 					<div className="w-fit">
 						<h4 className="text-center text-white text-3xl font-bold mb-3 drop-shadow-md">Moves</h4>
-						<div className="bg-white w-80 h-96 rounded-lg shadow-md">
+						<div className="bg-lightblue w-80 h-96 rounded-md border-2 border-black shadow-box">
 							<ol className="list-decimal text-xs">{moves}</ol>
 						</div>
 					</div>

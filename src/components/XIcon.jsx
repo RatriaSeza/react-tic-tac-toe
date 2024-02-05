@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 function XIcon({ className }) {
-  const classes = `text-[#56BAED] text-[2.5rem] ${className}`
+  const classes = `text-black text-[2.5rem] ${className}`
   
 	return (
     <div className={classes}>

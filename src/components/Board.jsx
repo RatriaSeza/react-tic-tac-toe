@@ -24,7 +24,7 @@ function Board({ xIsNext, squares, onPlay, board }) {
 	return (
 		<>
 			<div className="text-3xl text-white text-center font-semibold mb-4">{winner ? status : (<Player xIsNext={xIsNext} />)}</div>
-			<div className="grid grid-cols-3 gap-1">
+			<div className="grid grid-cols-3 gap-2">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
 				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />

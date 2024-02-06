@@ -45,7 +45,7 @@ function Game() {
 	});
 
 	return (
-		<div className="bg-[#E8E8E8] w-dvw h-fit md:h-dvh flex flex-col justify-between">
+		<div className="bg-[#E8E8E8] w-dvw h-fit md:h-dvh flex flex-col justify-between pb-10">
 			<div className="flex flex-col md:flex-row gap-10 py-10">
 				<div className="basis-1/2 flex flex-col items-center md:items-end justify-center">
 					<div className="flex flex-col items-center">
